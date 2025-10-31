@@ -33,7 +33,7 @@ RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cac
 && chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
 
 # إعداد Apache ليوجه إلى public
-COPY ./000-default.conf /etc/apache2/sites-available/000-default.conf
+#COPY ./000-default.conf /etc/apache2/sites-available/000-default.conf
 
 EXPOSE 80
 CMD ["apache2-foreground"]
