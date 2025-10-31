@@ -3,10 +3,18 @@ services:
     name: findme-api
     env: php
     plan: free
-    buildCommand: ""
-    startCommand: "php -S 0.0.0.0:10000 -t public"
+    buildCommand: |
+      composer install
+      php artisan key:generate
+      php artisan migrate --force
+    startCommand: php artisan serve --host 0.0.0.0 --port 10000
     envVars:
       - key: APP_ENV
         value: production
+      - key: APP_KEY
+        value: base64:SomeRandomKeyHere
       - key: APP_DEBUG
         value: false
+      - key: APP_URL
+        value: https://findme-api.onrender.com
+    autoDeploy: true
