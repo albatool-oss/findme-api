@@ -10,7 +10,7 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 # تثبيت امتدادات PHP المطلوبة
-RUN docker-php-ext-configure zip --with-libzip \
+RUN docker-php-ext-install zip pdo pdo_mysql
 && docker-php-ext-install pdo pdo_mysql zip mbstring exif pcntl xml
 
 # تفعيل mod_rewrite في Apache
