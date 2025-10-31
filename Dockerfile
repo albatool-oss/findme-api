@@ -6,8 +6,11 @@ FROM php:8.2-apache
 
 # تثبيت حزم نظام مطلوبة
 RUN apt-get update && apt-get install -y \
-    libzip-dev zip unzip git curl libpng-dev libonig-dev libxml2-dev \
-    && rm -rf /var/lib/apt/lists/*
+    libpng-dev libonig-dev libxml2-dev \
+    zip unzip git curl
+    docker-php-ext-install zip pdo && 
+    \ pdo_mysql mbstring exif pcntl xml
+    */ rm -rf /var/lib/apt/lists &&
 
 # تثبيت امتدادات PHP المطلوبة
 RUN docker-php-ext-install zip pdo pdo_mysql
